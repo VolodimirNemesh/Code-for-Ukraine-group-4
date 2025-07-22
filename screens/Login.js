@@ -14,19 +14,33 @@ export default function Login() {
   }
 
   return (
-    <View style={{flex: 1, alignItems: 'center', justifyContent: 'space-around', backgroundColor: 'blue'}}>
-      <Pressable onPress={() => navigate("MainTabs")}>
-        <Text style={styles.header}>LOG IN</Text>
-      </Pressable>
-      <Pressable onPress={() => navigation.navigate("Register")}>
-        <Text style={styles.header}>REGISTER</Text>
-      </Pressable>
+    <View style={styles.container}>
+      <View style={styles.loginWindow}>
+        <Text style={styles.header}></Text>
+        <Pressable onPress={() => navigate("MainTabs")}>
+          <Text style={styles.header}>LOG IN</Text>
+        </Pressable>
+        <Pressable onPress={() => navigation.navigate("Register")}>
+          <Text style={styles.header}>REGISTER</Text>
+        </Pressable>
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1, 
+    alignItems: "center", 
+    justifyContent: "center",
+    backgroundColor: "#FFFFFF"
+  },
+  loginWindow: {
+    backgroundColor: "#CC005C",
+    height: "50%",
+    width: "80%"
+  },
   header: {
-    fontSize: 72,
+    fontSize: 36,
   }
 })

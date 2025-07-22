@@ -34,7 +34,7 @@ export default function App() {
         <Stack.Screen name='Login' component={LoginScreen}/>
         <Stack.Screen name='Register' component={RegisterScreen}/>
         <Stack.Screen name='MainTabs' component={MainTabs}/>
-        <Stack.Screen name='Settings' component={SettingsScreen}/>
+        <Stack.Screen name='Settings' component={SettingsScreen} options={{headerShown: true}}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
