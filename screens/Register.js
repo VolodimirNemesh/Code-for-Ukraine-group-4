@@ -3,10 +3,22 @@ import { useNavigation } from "@react-navigation/native";
 
 export default function Register() {
   const navigation = useNavigation();
+
+  function navigate(screenName) {
+    navigation.navigate(screenName);
+    navigation.reset({
+      index: 0,
+      routes: [{ name: screenName }]
+    });
+  }
+
   return (
     <View style={{flex: 1, alignItems: 'center', justifyContent: 'space-around', backgroundColor: 'blue'}}>
-      <Pressable onPress={() => navigation.navigate("MainTabs")}>
+      <Pressable onPress={() => navigate("MainTabs")}>
         <Text style={styles.header}>REGISTER</Text>
+      </Pressable>
+      <Pressable onPress={() => navigation.goBack()}>
+        <Text style={styles.header}>LOGIN</Text>
       </Pressable>
     </View>
   );

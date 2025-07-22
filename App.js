@@ -17,7 +17,7 @@ const Tabs = createBottomTabNavigator();
 
 function MainTabs() {
   return (
-    <Tabs.Navigator initialRouteName="Home">
+    <Tabs.Navigator initialRouteName="Home" screenOptions={{headerShown: false}}>
       <Tabs.Screen name="Home" component={HomeScreen}/>
       <Tabs.Screen name="Search" component={SearchScreen}/>
       <Tabs.Screen name="New Post" component={NewPostScreen}/>
