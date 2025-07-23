@@ -1,6 +1,10 @@
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, createStaticNavigation } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faQuestion, faHouse, faMagnifyingGlass, faCirclePlus, faComments, faUser } from '@fortawesome/free-solid-svg-icons'
 
 
 import LoginScreen from "./screens/Login.js";
@@ -15,11 +19,39 @@ import SettingsScreen from "./screens/Settings.js";
 const Stack = createNativeStackNavigator();
 const Tabs = createBottomTabNavigator();
 
-const header = {headerShown: true, title: "SpotSight", headerStyle: { backgroundColor: "#CC005C" }, headerTintColor: "#FFFFFF", headerTitleStyle: { fontWeight: "bold" }};
-
 function MainTabs() {
+
   return (
-    <Tabs.Navigator initialRouteName="Home" screenOptions={header}>
+    <Tabs.Navigator
+      initialRouteName="Home"
+      screenOptions={({ route }) => ({
+        tabBarLabel: route.name,
+        headerShown: true,
+        title: "SpotSight",
+        headerStyle: { backgroundColor: "#CC005C" },
+        headerTintColor: "#FFFFFF",
+        headerTitleStyle: { fontWeight: "bold" },
+        tabBarIcon: ({ focused, color, size }) => {
+          let iconName = faQuestion;
+
+          if (route.name === "Home") {
+            iconName = faHouse;
+          } else if (route.name === "Search") {
+            iconName = faMagnifyingGlass;
+          } else if (route.name === "New Post") {
+            iconName = faCirclePlus;
+          } else if (route.name === "Messages") {
+            iconName = faComments;
+          } else if (route.name === "Profile") {
+            iconName = faUser;
+          }
+
+          return <FontAwesomeIcon icon={iconName} size={size} color={color} />;
+        },
+        tabBarActiveTintColor: "#000000",
+        tabBarInactiveTintColor: "#FFFFFF",
+        tabBarStyle: { backgroundColor: "#DD1155" }
+      })}>
       <Tabs.Screen name="Home" component={HomeScreen}/>
       <Tabs.Screen name="Search" component={SearchScreen}/>
       <Tabs.Screen name="New Post" component={NewPostScreen}/>
@@ -30,13 +62,16 @@ function MainTabs() {
 }
 
 export default function App() {
+
+  library.add(faQuestion, faHouse, faMagnifyingGlass, faCirclePlus, faComments, faUser);
+  
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Login" screenOptions={{headerShown: false}}>
         <Stack.Screen name='Login' component={LoginScreen}/>
         <Stack.Screen name='Register' component={RegisterScreen}/>
         <Stack.Screen name='MainTabs' component={MainTabs}/>
-        <Stack.Screen name='Settings' component={SettingsScreen} options={header}/>
+        <Stack.Screen name='Settings' component={SettingsScreen}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
