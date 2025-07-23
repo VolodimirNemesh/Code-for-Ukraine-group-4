@@ -15,9 +15,11 @@ import SettingsScreen from "./screens/Settings.js";
 const Stack = createNativeStackNavigator();
 const Tabs = createBottomTabNavigator();
 
+const header = {headerShown: true, title: "SpotSight", headerStyle: { backgroundColor: "#CC005C" }, headerTintColor: "#FFFFFF", headerTitleStyle: { fontWeight: "bold" }};
+
 function MainTabs() {
   return (
-    <Tabs.Navigator initialRouteName="Home" screenOptions={{headerShown: false}}>
+    <Tabs.Navigator initialRouteName="Home" screenOptions={header}>
       <Tabs.Screen name="Home" component={HomeScreen}/>
       <Tabs.Screen name="Search" component={SearchScreen}/>
       <Tabs.Screen name="New Post" component={NewPostScreen}/>
@@ -34,7 +36,7 @@ export default function App() {
         <Stack.Screen name='Login' component={LoginScreen}/>
         <Stack.Screen name='Register' component={RegisterScreen}/>
         <Stack.Screen name='MainTabs' component={MainTabs}/>
-        <Stack.Screen name='Settings' component={SettingsScreen} options={{headerShown: true}}/>
+        <Stack.Screen name='Settings' component={SettingsScreen} options={header}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -25,7 +25,8 @@ export default function Login() {
           <Text style={styles.button}>LOG IN</Text>
         </Pressable>
         <Pressable onPress={() => navigation.navigate("Register")} onHoverIn={() => setStyle(styles.textIn)} onHoverOut={() => setStyle(styles.textOut)}>
-          <Text style={style}>Don't have an account yet? Register</Text>
+          <Text style={styles.textOut}>Don't have an account yet?</Text>
+          <Text style={style}>Register</Text>
         </Pressable>
       </View>
     </View>
@@ -63,7 +64,8 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     backgroundColor: "#FFFFFF",
     width: "85%",
-    alignSelf: "center"
+    alignSelf: "center",
+    color: "orange",
   },
   button: {
     margin: 20,
