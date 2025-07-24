@@ -1,111 +1,93 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Image, Pressable} from 'react-native';
+import {React} from 'react';
+import { StyleSheet, Text, View, TouchableOpacity, Image, Pressable } from 'react-native';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import { useNavigation } from "@react-navigation/native";
 
 export default function Profile() {
     const navigation = useNavigation();
-  
-  const [fontsLoaded, fontError] = useFonts({
-      'PassionOne': require('./Fonts/PassionOne-Regular.ttf'),
-      'Inter': require('./Fonts/Inter-V.ttf'),
-      'Exo': require('./Fonts/Exo-V.ttf'),
-      'JosefinSans': require('./Fonts/JosefinSans-V.ttf'),
-      'Sans': require('./Fonts/OpenSans-V.ttf'),
-      'Roboto': require('./Fonts/Roboto.ttf')
-  });
 
     function ColorRectangleScreenProfile1() {
-  return(
-    <View style={styles.ColorRectangleProfile1}>
-    <Image source={require('./ProfileIcons/SettingsIconProfile30x30.png')} 
-      style={styles.SettingsIconProfile}
-      />
-    </View>
-
-  );
+    return(
+      <View style={styles.ColorRectangleProfile1}>
+        <Image source={require('../ProfileIcons/SettingsIconProfile30x30.png')} 
+          style={styles.SettingsIconProfile}
+        />
+      </View>
+    );
 }
 
 
-    function ColorRectangleScreenProfile2() {
+function ColorRectangleScreenProfile2() {
   return(
     <View style={styles.ColorRectangleProfile2}>
-    <View style={styles.row}>
-    <Image source={require('./ProfileIcons/ProfileMainIcon.png')} 
-          style={styles.ProfileMainIcon}
-          />
-          <Image source={require('./ProfileIcons/PhotoProfile.png')} 
-          style={styles.PhotoProfile}
-          />
-          
-          <View style={styles.column}>
-        <Text style={styles.NickName}>Ayanami Rei</Text>
-        <Text style={styles.UserName}>@ayanamilegend</Text>
+      <View style={styles.row}>
+        <Image source={require('../ProfileIcons/ProfileMainIcon.png')} 
+              style={styles.ProfileMainIcon}
+        />
+        <Image source={require('../ProfileIcons/PhotoProfile.png')} 
+        style={styles.PhotoProfile}
+        />
+              
+        <View style={styles.column}>
+          <Text style={styles.NickName}>Ayanami Rei</Text>
+          <Text style={styles.UserName}>@ayanamilegend</Text>
         </View>
+      </View>
     </View>
-    
-      
-    
-
-    </View>
-
   );
 }
-    function ColorElipseScreenProfile1() {
+
+function ColorElipseScreenProfile1() {
   return(
     <View style={styles.ColorElipseProfile1}>
 
     </View>
-
   );
 }
 function EditProfileProfile() {
   return(
     <TouchableOpacity
-                onPress={() => navigation.navigate("EditProfileScreen")}
-                style={styles.WhiteButtonProfile}
-              >
-    <View style={styles.row}>
-      <Image source={require('./ProfileIcons/EditIconProfile.png')} 
-      style={styles.IconsProfile}
-      />
-      <Text style={styles.OptionText}>
-      Edit Profile
-    </Text>
-      <Image source={require('./ProfileIcons/ForwardIconProfile30.png')} 
-      style={styles.ForwardIconProfile}
-      />
-      
-    </View>
-    
-
-              </TouchableOpacity>
-
+      onPress={() => navigation.navigate("EditProfileScreen")}
+      style={styles.WhiteButtonProfile}
+    >
+      <View style={styles.row}>
+        <Image source={require('../ProfileIcons/EditIconProfile.png')} 
+        style={styles.IconsProfile}
+        />
+        <Text style={styles.OptionText}>
+          Edit Profile
+        </Text>
+        <Image source={require('../ProfileIcons/ForwardIconProfile30.png')} 
+        style={styles.ForwardIconProfile}
+        />
+        
+      </View>
+    </TouchableOpacity>
   );
 }
 function PinnedProfile() {
   return(
     <TouchableOpacity
-                onPress={() => navigation.navigate("PinnedScreen")}
-                style={styles.WhiteButtonProfile}
-              >
+      onPress={() => navigation.navigate("PinnedScreen")}
+      style={styles.WhiteButtonProfile}
+    >
     <View style={styles.row}>
-      <Image source={require('./ProfileIcons/PinnedProfile.png')} 
+      <Image source={require('../ProfileIcons/PinnedProfile.png')} 
       style={styles.IconsProfile}
       />
       <Text style={styles.OptionText}>
       Pinned
     </Text>
-      <Image source={require('./ProfileIcons/ForwardIconProfile30.png')} 
+      <Image source={require('../ProfileIcons/ForwardIconProfile30.png')} 
       style={styles.ForwardIconProfile}
       />
       
     </View>
     
 
-              </TouchableOpacity>
+    </TouchableOpacity>
 
   );
 }
@@ -116,13 +98,13 @@ function YourHiddenGemsProfile() {
                 style={styles.WhiteButtonProfile}
               >
     <View style={styles.row}>
-      <Image source={require('./ProfileIcons/YourHiddenGemsProfile.png')} 
+      <Image source={require('../ProfileIcons/YourHiddenGemsProfile.png')} 
       style={styles.IconsProfile}
       />
       <Text style={styles.OptionText}>
       Your Hidden Gems
     </Text>
-      <Image source={require('./ProfileIcons/ForwardIconProfile30.png')} 
+      <Image source={require('../ProfileIcons/ForwardIconProfile30.png')} 
       style={styles.ForwardIconProfile}
       />
       
@@ -140,13 +122,13 @@ function LanguageProfile() {
                 style={styles.WhiteButtonProfile}
               >
     <View style={styles.row}>
-      <Image source={require('./ProfileIcons/LanguageProfile.png')} 
+      <Image source={require('../ProfileIcons/LanguageProfile.png')} 
       style={styles.IconsProfile}
       />
       <Text style={styles.OptionText}>
       Language
     </Text>
-      <Image source={require('./ProfileIcons/ForwardIconProfile30.png')} 
+      <Image source={require('../ProfileIcons/ForwardIconProfile30.png')} 
       style={styles.ForwardIconProfile}
       />
       
@@ -164,13 +146,13 @@ function FriendsProfile() {
                 style={styles.WhiteButtonProfile}
               >
     <View style={styles.row}>
-      <Image source={require('./ProfileIcons/FriendsProfile.png')} 
+      <Image source={require('../ProfileIcons/FriendsProfile.png')} 
       style={styles.IconsProfile}
       />
       <Text style={styles.OptionText}>
       Friends
     </Text>
-      <Image source={require('./ProfileIcons/ForwardIconProfile30.png')} 
+      <Image source={require('../ProfileIcons/ForwardIconProfile30.png')} 
       style={styles.ForwardIconProfile}
       />
       
@@ -188,13 +170,13 @@ function FavoriteProfile() {
                 style={styles.WhiteButtonProfile}
               >
     <View style={styles.row}>
-      <Image source={require('./ProfileIcons/FavoriteProfile.png')} 
+      <Image source={require('../ProfileIcons/FavoriteProfile.png')} 
       style={styles.IconsProfile}
       />
       <Text style={styles.OptionText}>
       Favorite Places
     </Text>
-      <Image source={require('./ProfileIcons/ForwardIconProfile30.png')} 
+      <Image source={require('../ProfileIcons/ForwardIconProfile30.png')} 
       style={styles.ForwardIconProfile}
       />
       
@@ -212,13 +194,13 @@ function InformationProfile() {
                 style={styles.WhiteButtonProfile}
               >
     <View style={styles.row}>
-      <Image source={require('./ProfileIcons/InformationProfile.png')} 
+      <Image source={require('../ProfileIcons/InformationProfile.png')} 
       style={styles.IconsProfile}
       />
       <Text style={styles.OptionText}>
       Information
     </Text>
-      <Image source={require('./ProfileIcons/ForwardIconProfile30.png')} 
+      <Image source={require('../ProfileIcons/ForwardIconProfile30.png')} 
       style={styles.ForwardIconProfile}
       />
       

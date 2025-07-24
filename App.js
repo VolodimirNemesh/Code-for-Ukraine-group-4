@@ -1,6 +1,8 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { useFonts } from 'expo-font';
+import { React } from 'react';
 
 
 import LoginScreen from "./screens/Login.js";
@@ -30,6 +32,16 @@ function MainTabs() {
 }
 
 export default function App() {
+  const [fontsLoaded, fontError] = useFonts({
+    'PassionOne': require('./Fonts/PassionOne-Regular.ttf'),
+    'Inter': require('./Fonts/Inter-V.ttf'),
+    'Exo': require('./Fonts/Exo-V.ttf'),
+    'JosefinSans': require('./Fonts/JosefinSans-V.ttf'),
+    'Sans': require('./Fonts/OpenSans-V.ttf'),
+    'Roboto': require('./Fonts/Roboto.ttf')
+  })
+
+
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Login" screenOptions={{headerShown: false}}>
