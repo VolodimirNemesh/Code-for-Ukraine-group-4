@@ -1,4 +1,4 @@
-import { StyleSheet, Text, Image, View, ScrollView, TouchableOpacity, Alert, TextInput, Switch, Pressable } from 'react-native';
+import { StyleSheet, Text, Image, View, ScrollView } from 'react-native';
 
 
 function Description (props) {
