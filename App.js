@@ -21,12 +21,12 @@ const header = {headerShown: true, title: "SpotSight", headerStyle: { background
 
 function MainTabs() {
   return (
-    <Tabs.Navigator initialRouteName="Home" screenOptions={header}>
+    <Tabs.Navigator initialRouteName="Home" screenOptions={{headerShown: false}}>
       <Tabs.Screen name="Home" component={HomeScreen}/>
       <Tabs.Screen name="Search" component={SearchScreen}/>
       <Tabs.Screen name="New Post" component={NewPostScreen}/>
       <Tabs.Screen name="Messages" component={MessagesScreen}/>
-      <Tabs.Screen name="Profile" component={ProfileScreen}/>
+      <Tabs.Screen name="Profile" component={ProfileScreen} screenOptions={{headerShown: false}}/>
     </Tabs.Navigator>
   )
 }
@@ -47,7 +47,7 @@ export default function App() {
       <Stack.Navigator initialRouteName="Login" screenOptions={{headerShown: false}}>
         <Stack.Screen name='Login' component={LoginScreen}/>
         <Stack.Screen name='Register' component={RegisterScreen}/>
-        <Stack.Screen name='MainTabs' component={MainTabs}/>
+        <Stack.Screen name='MainTabs' component={MainTabs} options={{headerShown: false}}/>
         <Stack.Screen name='Settings' component={SettingsScreen} options={header}/>
       </Stack.Navigator>
     </NavigationContainer>

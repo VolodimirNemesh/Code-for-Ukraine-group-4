@@ -11,9 +11,12 @@ export default function Profile() {
     function ColorRectangleScreenProfile1() {
     return(
       <View style={styles.ColorRectangleProfile1}>
+      <View style={styles.row}>
+        <Text style={styles.AppName}>SpotSight</Text>
         <Image source={require('../ProfileIcons/SettingsIconProfile30x30.png')} 
           style={styles.SettingsIconProfile}
         />
+      </View>
       </View>
     );
 }
@@ -87,7 +90,7 @@ function PinnedProfile() {
     </View>
     
 
-    </TouchableOpacity>
+      </TouchableOpacity>
 
   );
 }
@@ -256,7 +259,7 @@ const styles = StyleSheet.create({
 
   ColorRectangleProfile1: {
     width: '100%',
-    height: '8.04%',
+    height: '10%',
     backgroundColor: '#CC005C',
     alignSelf: 'center',
     top: 0,
@@ -342,6 +345,15 @@ const styles = StyleSheet.create({
     marginTop: 100,
     color: 'white',
     marginLeft: 10
+
+  },
+  AppName: {
+    fontFamily: 'PassionOne', 
+    fontSize: 30,
+    marginTop: "8%",
+    color: 'white',
+    marginLeft: '4%',
+    position: 'absolute',
 
   },
   UserName: {
