@@ -1,84 +1,263 @@
-import { View, Text, StyleSheet, Image, FlatList, Dimensions, TextInput } from "react-native";
+import React, { useState } from 'react';
+import {
+  View, Text, StyleSheet, Image, Dimensions,
+  TextInput, ScrollView, FlatList, TouchableOpacity
+} from "react-native";
 
-function CustomImage(props) {
-  return (
-    <View style={styles.view}>
-      <Image style={styles.img} source={props.src}/>
-      <Text style={styles.imageText}>{props.text}</Text>
-    </View>
-  )
-}
-
-const suggestedData = [
-  {src: require("../images/MountFuji.jpg"), text: "Mount Fuji"},
-  {src: require("../images/HalongBay.jpg"), text: "Halong Bay"},
+// ДатаБаза для скрола
+const sampleDataSuggested = [
+  { id: '1', title: 'Lviv Botanical Garden', image: require('../images/LvivBotanicalGarden.jpeg') },
+  { id: '2', title: 'CityOpera', image: require('../images/LvivNationalOpera.jpg') },
+  { id: '3', title: 'Tustan', image: require('../images/Tustan.jpg') },
+  { id: '4', title: 'Hoverla', image: require('../images/MountHoverla.jpg') },
+  { id: '5', title: 'Kiev Lavra', image: require('../images/Lavra.jpg') },
 ];
-const popularData = [
-  {src: require("../images/EiffelTower.jpg"), text: "Eiffel Tower"}, 
-  {src: require("../images/LeaningTowerOfPisa.jpg"), text: "Leaning Tower Of Pisa"},
+const sampleDataPopular = [
+  { id: '1', title: 'Leaning Tower', image: require('../images2/LeaningTowerOfPisa.jpg') },
+  { id: '2', title: 'Eiffel Tower', image: require('../images2/EiffelTower.jpg') },
+  { id: '3', title: 'Mount Fuji', image: require('../images2/MountFuji.jpg') },
+  { id: '4', title: 'Halong Bay', image: require('../images2/HalongBay.jpg') },
+  { id: '5', title: 'Osaka Castle', image: require('../images2/OsakaCastle.jpg') },
 ];
-const friendsFavouriteData = [
-  {src: require("../images/LvivNationalOpera.jpg"), text: "Lviv National Opera"},
-  {src: require("../images/MountHoverla.jpg"), text: "Mount Hoverla"},
+const sampleDataFriends = [
+  { id: '1', title: 'Mountain Reinier', image: require('../images3/MountainRainier2.jpg') },
+  { id: '2', title: 'Karazin University', image: require('../images3/KarazinUniversity.jpg') },
+  { id: '3', title: 'Mount Fuji', image: require('../images3/vVsokiiZamok.jpeg') },
+  { id: '4', title: 'MukachevoCastle', image: require('../images3/MukachevoCastle.jpg') },
+  { id: '5', title: 'Doumo Milan', image: require('../images3/AnorLondo.jpg') },
 ];
 
 const window = Dimensions.get("window");
 
 export default function Search() {
+  const [bookmarks, setBookmarks] = useState({});
+
+  const toggleBookmark = (id) => {
+     setBookmarks((prev) => ({
+      ...prev,
+      [id]: !prev[id]
+    }));
+  };
+
+  const renderHorizontalListSuggested = (title, listKey) => (
+    <View key={listKey} style={styles.section}>
+      <Text style={styles.sectionTitle}>{title}</Text>
+      <FlatList
+        data={sampleDataSuggested}
+        horizontal
+         keyExtractor={(item) => listKey + item.id}
+        showsHorizontalScrollIndicator={false}
+        renderItem={({ item }) => (
+          <View style={styles.card}>
+            <Image source={item.image} style={styles.image} />
+            <TouchableOpacity
+              onPress={() => toggleBookmark(listKey + item.id)}
+          style={styles.bookmarkButton}
+            >
+             
+             
+         <Image
+                source={require('../ProfileIcons/FavoriteProfile.png')}
+                style={[
+                  styles.bookmarkIcon,
+                  { tintColor: bookmarks[listKey + item.id] ? '#CC005C' : '#ccc' }
+                ]}
+              />
+            </TouchableOpacity>
+              <View style={styles.caption}>
+              <Text style={styles.captionText}>{item.title}</Text>
+            </View>
+          </View>
+        )}
+      />
+    </View>
+  );
+  const renderHorizontalListPopular = (title, listKey) => (
+    <View key={listKey} style={styles.section}>
+      <Text style={styles.sectionTitle}>{title}</Text>
+      <FlatList
+        data={sampleDataPopular}
+        horizontal
+         keyExtractor={(item) => listKey + item.id}
+        showsHorizontalScrollIndicator={false}
+        renderItem={({ item }) => (
+          <View style={styles.card}>
+            <Image source={item.image} style={styles.image} />
+            <TouchableOpacity
+              onPress={() => toggleBookmark(listKey + item.id)}
+          style={styles.bookmarkButton}
+            >
+             
+             
+         <Image
+                source={require('../ProfileIcons/FavoriteProfile.png')}
+                style={[
+                  styles.bookmarkIcon,
+                  { tintColor: bookmarks[listKey + item.id] ? '#CC005C' : '#ccc' }
+                ]}
+              />
+            </TouchableOpacity>
+              <View style={styles.caption}>
+              <Text style={styles.captionText}>{item.title}</Text>
+            </View>
+          </View>
+        )}
+      />
+    </View>
+  );
+  const renderHorizontalListFriends = (title, listKey) => (
+    <View key={listKey} style={styles.section}>
+      <Text style={styles.sectionTitle}>{title}</Text>
+      <FlatList
+        data={sampleDataFriends}
+        horizontal
+         keyExtractor={(item) => listKey + item.id}
+        showsHorizontalScrollIndicator={false}
+        renderItem={({ item }) => (
+          <View style={styles.card}>
+            <Image source={item.image} style={styles.image} />
+            <TouchableOpacity
+              onPress={() => toggleBookmark(listKey + item.id)}
+          style={styles.bookmarkButton}
+            >
+             
+             
+         <Image
+                source={require('../ProfileIcons/FavoriteProfile.png')}
+                style={[
+                  styles.bookmarkIcon,
+                  { tintColor: bookmarks[listKey + item.id] ? '#CC005C' : '#ccc' }
+                ]}
+              />
+            </TouchableOpacity>
+              <View style={styles.caption}>
+              <Text style={styles.captionText}>{item.title}</Text>
+            </View>
+          </View>
+        )}
+      />
+    </View>
+  );
+
+
   return (
-    <View style={{flex: 1}}>
-      <View style={styles.search}>
-        <TextInput style={{ margin: 2, borderRadius: 20, borderColor: "#FFFFFF", borderWidth: 2, alignSelf: "flex-start" }} placeholder="Search here..."></TextInput>
+    <View style={styles.container}>
+      
+      <View style={styles.header}>
+        <Text style={styles.appName}>SpotSight</Text>
       </View>
-      <Text style={styles.text}>Suggested</Text>
-      <FlatList style={styles.list} showsHorizontalScrollIndicator={false} horizontal={true} data={suggestedData} renderItem={({item}) => <CustomImage src={item.src} text={item.text}/>}></FlatList>
-      <Text style={styles.text}>Popular</Text>
-      <FlatList style={styles.list} showsHorizontalScrollIndicator={false} horizontal={true} data={popularData} renderItem={({item}) => <CustomImage src={item.src} text={item.text}/>}></FlatList>
-      <Text style={styles.text}>Friends Favourite</Text>
-      <FlatList style={styles.list} showsHorizontalScrollIndicator={false} horizontal={true} data={friendsFavouriteData} renderItem={({item}) => <CustomImage src={item.src} text={item.text}/>}></FlatList>
+
+
+      <View style={styles.searchContainer}>
+        <View style={styles.searchBox}>
+          <TextInput
+            style={styles.searchInput}
+            placeholder="Search here..."
+            placeholderTextColor="white"
+          />
+          <Image source={require('../SearchIcons/LoopSearch.png')} style={styles.loopIcon} />
+        </View>
+      </View>
+
+     {/* //От це типу горизонтальні скроли, але треба доробити розмір зображень// */}
+      <ScrollView contentContainerStyle={styles.scrollContent}>
+        {renderHorizontalListSuggested("Suggested", 'trending')}
+        {renderHorizontalListPopular("Popular", 'popular')}
+        {renderHorizontalListFriends("Friends Favorite", 'friends')}
+      </ScrollView>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  img: {
+  container: {
     flex: 1,
-    borderRadius: 15,
-    borderColor: "#000000",
-    borderWidth: 3,
-    resizeMode: "stretch",
-    maxHeight: "100%",
-    maxWidth: "100%",
+    backgroundColor: 'white'
   },
-  imageText: {
-    fontWeight: "bold",
-    fontSize: 24,
-    marginLeft: 10,
+  header: {
+    height: Dimensions.get("window").height * 0.1,
+    backgroundColor: '#CC005C',
+    justifyContent: 'center',
+    paddingLeft: 16,
   },
-  view: {
-    justifyContent: "center",
-    alignItems: "center",
-    borderRadius: 15,
-    flex: 1,
-    flexDirection: "column",
-    backgroundColor: "#D9D9D9",
-    maxHeight: "100%",
-    width: window.width * 0.7,
-    marginRight: 30,
+  appName: {
+    fontFamily: 'PassionOne',
+    fontSize: 30,
+    color: 'white',
   },
-  list: {
-    marginLeft: 30,
-    maxHeight: "28%",
-    maxWidth: "100%",
-  },
-  text: {
-    margin: 5,
-    fontWeight: "bold",
-    fontSize: 16,
-  },
-  search: {
+  searchContainer: {
+    backgroundColor: '#FD4A9B',
     borderBottomLeftRadius: 20,
     borderBottomRightRadius: 20,
-    backgroundColor: "rgba(204, 0, 92, 0.7)"
+    paddingVertical: 8,
+    paddingHorizontal: 16,
   },
-})
+  searchBox: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderColor: 'white',
+    borderWidth: 1,
+    borderRadius: 20,
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+  },
+  searchInput: {
+    flex: 1,
+    color: 'white',
+  },
+  loopIcon: {
+    width: 24,
+    height: 24,
+    marginLeft: 8,
+
+  },
+  scrollContent: {
+    padding: 16,
+    paddingBottom: 100,
+  },
+  section: {
+    marginBottom: 30,
+  },
+  sectionTitle: {
+    fontSize: 20,
+    fontFamily: 'PassionOne',
+    marginBottom: 10,
+  },
+  card: {
+    width: 300,
+    marginRight: 14,
+    borderRadius: 12,
+    overflow: 'hidden',
+    backgroundColor: '#f5f5f5',
+    elevation: 3,
+    position: 'relative',
+    
+  },
+  image: {
+    width: '100%',
+    height: 150,
+  },
+  bookmarkButton: {
+    position: 'absolute',
+    top: 4,
+    right: 4,
+    padding: 2,
+    
+  },
+  bookmarkIcon: {
+    width: 30,
+    height: 30,
+  },
+  caption: {
+    backgroundColor: '#eee',
+    paddingVertical: 1,
+    paddingHorizontal: 8,
+    height: 40,
+  },
+  captionText: {
+    top: 5,
+    fontSize: 20,
+    color: '#333',
+    fontFamily: "PassionOne"
+  }
+});

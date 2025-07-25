@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
   },
   ColorRectangleProfile1: {
     width: '100%',
-    height: '8.04%',
+    height: '10%',
     backgroundColor: '#CC005C',
     alignSelf: 'center',
     top: 0,
