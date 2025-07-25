@@ -6,245 +6,38 @@ import * as SplashScreen from 'expo-splash-screen';
 import { useNavigation } from "@react-navigation/native";
 
 export default function Profile() {
-    const navigation = useNavigation();
+  const navigation = useNavigation();
 
-    function ColorRectangleScreenProfile1() {
+  function ColorRectangleScreenProfile2() {
     return(
-      <View style={styles.ColorRectangleProfile1}>
-        <Image source={require('../ProfileIcons/SettingsIconProfile30x30.png')} 
-          style={styles.SettingsIconProfile}
-        />
-      </View>
-    );
-}
-
-
-function ColorRectangleScreenProfile2() {
-  return(
-    <View style={styles.ColorRectangleProfile2}>
-      <View style={styles.row}>
-        <Image source={require('../ProfileIcons/ProfileMainIcon.png')} 
-              style={styles.ProfileMainIcon}
-        />
-        <Image source={require('../ProfileIcons/PhotoProfile.png')} 
-        style={styles.PhotoProfile}
-        />
-               
+      <View style={styles.ColorRectangleProfile2}>
+        <Image source={require('../ProfileIcons/ProfileMainIcon.png')} style={styles.ProfileMainIcon}/>
         <View style={styles.column}>
           <Text style={styles.NickName}>Ayanami Rei</Text>
           <Text style={styles.UserName}>@ayanamilegend</Text>
         </View>
       </View>
-    </View>
-  );
-}
+    );
+  }
 
-function ColorElipseScreenProfile1() {
-  return(
-    <View style={styles.ColorElipseProfile1}>
+  function ColorElipseScreenProfile1() {
+    return <View style={styles.ColorElipseProfile1}></View>;
+  }
 
-    </View>
-  );
-}
-function EditProfileProfile() {
-  return(
-    <TouchableOpacity
-      onPress={() => navigation.navigate("EditProfileScreen")}
-      style={styles.WhiteButtonProfile}
-    >
-      <View style={styles.row}>
-        <Image source={require('../ProfileIcons/EditIconProfile.png')} 
-        style={styles.IconsProfile}
-        />
-        <Text style={styles.OptionText}>
-          Edit Profile
-        </Text>
-        <Image source={require('../ProfileIcons/ForwardIconProfile30.png')} 
-        style={styles.ForwardIconProfile}
-        />
-        
-      </View>
-    </TouchableOpacity>
-  );
-}
-function PinnedProfile() {
-  return(
-    <TouchableOpacity
-      onPress={() => navigation.navigate("PinnedScreen")}
-      style={styles.WhiteButtonProfile}
-    >
-    <View style={styles.row}>
-      <Image source={require('../ProfileIcons/PinnedProfile.png')} 
-      style={styles.IconsProfile}
-      />
-      <Text style={styles.OptionText}>
-      Pinned
-    </Text>
-      <Image source={require('../ProfileIcons/ForwardIconProfile30.png')} 
-      style={styles.ForwardIconProfile}
-      />
-      
-    </View>
-    
-
-    </TouchableOpacity>
-
-  );
-}
-function YourHiddenGemsProfile() {
-  return(
-    <TouchableOpacity
-                onPress={() => navigation.navigate("YourHiddenGemsScreen")}
-                style={styles.WhiteButtonProfile}
-              >
-    <View style={styles.row}>
-      <Image source={require('../ProfileIcons/YourHiddenGemsProfile.png')} 
-      style={styles.IconsProfile}
-      />
-      <Text style={styles.OptionText}>
-      Your Hidden Gems
-    </Text>
-      <Image source={require('../ProfileIcons/ForwardIconProfile30.png')} 
-      style={styles.ForwardIconProfile}
-      />
-      
-    </View>
-    
-
-              </TouchableOpacity>
-
-  );
-}
-function LanguageProfile() {
-  return(
-    <TouchableOpacity
-                onPress={() => navigation.navigate("LanguageScreen")}
-                style={styles.WhiteButtonProfile}
-              >
-    <View style={styles.row}>
-      <Image source={require('../ProfileIcons/LanguageProfile.png')} 
-      style={styles.IconsProfile}
-      />
-      <Text style={styles.OptionText}>
-      Language
-    </Text>
-      <Image source={require('../ProfileIcons/ForwardIconProfile30.png')} 
-      style={styles.ForwardIconProfile}
-      />
-      
-    </View>
-    
-
-              </TouchableOpacity>
-
-  );
-}
-function FriendsProfile() {
-  return(
-    <TouchableOpacity
-                onPress={() => navigation.navigate("FriendsScreen")}
-                style={styles.WhiteButtonProfile}
-              >
-    <View style={styles.row}>
-      <Image source={require('../ProfileIcons/FriendsProfile.png')} 
-      style={styles.IconsProfile}
-      />
-      <Text style={styles.OptionText}>
-      Friends
-    </Text>
-      <Image source={require('../ProfileIcons/ForwardIconProfile30.png')} 
-      style={styles.ForwardIconProfile}
-      />
-      
-    </View>
-    
-
-              </TouchableOpacity>
-
-  );
-}
-function FavoriteProfile() {
-  return(
-    <TouchableOpacity
-                onPress={() => navigation.navigate("FavoriteScreen")}
-                style={styles.WhiteButtonProfile}
-              >
-    <View style={styles.row}>
-      <Image source={require('../ProfileIcons/FavoriteProfile.png')} 
-      style={styles.IconsProfile}
-      />
-      <Text style={styles.OptionText}>
-      Favorite Places
-    </Text>
-      <Image source={require('../ProfileIcons/ForwardIconProfile30.png')} 
-      style={styles.ForwardIconProfile}
-      />
-      
-    </View>
-    
-
-              </TouchableOpacity>
-
-  );
-}
-function InformationProfile() {
-  return(
-    <TouchableOpacity
-                onPress={() => navigation.navigate("InformationScreen")}
-                style={styles.WhiteButtonProfile}
-              >
-    <View style={styles.row}>
-      <Image source={require('../ProfileIcons/InformationProfile.png')} 
-      style={styles.IconsProfile}
-      />
-      <Text style={styles.OptionText}>
-      Information
-    </Text>
-      <Image source={require('../ProfileIcons/ForwardIconProfile30.png')} 
-      style={styles.ForwardIconProfile}
-      />
-      
-    </View>
-    
-
-              </TouchableOpacity>
-
-  );
-}
-function WhiteRectangleProfile() {
-  return(
-    <View style={styles.WhiteRectangleProfile}>
-    
-    </View>
-
-  );
-}
-return (
-  
+  return (
     <View style={styles.container}>
-    
-    <ColorElipseScreenProfile1/>
-    <ColorRectangleScreenProfile2/>
-    <ColorRectangleScreenProfile1/>
-    <View style={styles.column}>
-      <EditProfileProfile/>
-      <PinnedProfile/>
-      <YourHiddenGemsProfile/>
-      <LanguageProfile/>
-      <FriendsProfile/>
-      <FavoriteProfile/>
-      <InformationProfile/>
-      
-
-      
+      <ColorElipseScreenProfile1/>
+      <ColorRectangleScreenProfile2/>
+      <View style={styles.column}>
+        <ProfileNavigate navigation={navigation} screen="EditProfileScreen" text="Edit Profile" icon={require('../ProfileIcons/EditIconProfile.png')}/>
+        <ProfileNavigate navigation={navigation} screen="PinnedScreen" text="Pinned" icon={require('../ProfileIcons/PinnedProfile.png')}/>
+        <ProfileNavigate navigation={navigation} screen="YourHiddenGemsScreen" text="Your Hidden Gems" icon={require('../ProfileIcons/YourHiddenGemsProfile.png')}/>
+        <ProfileNavigate navigation={navigation} screen="LanguageScreen" text="Language" icon={require('../ProfileIcons/LanguageProfile.png')}/>
+        <ProfileNavigate navigation={navigation} screen="FriendsScreen" text="Friends" icon={require('../ProfileIcons/FriendsProfile.png')}/>
+        <ProfileNavigate navigation={navigation} screen="FavoriteScreen" text="Favorite Places" icon={require('../ProfileIcons/FavoriteProfile.png')}/>
+        <ProfileNavigate navigation={navigation} screen="InformationScreen" text="Information" icon={require('../ProfileIcons/InformationProfile.png')}/>
       </View>
-    
-      
-
     </View>
-    
-    
-
   );
 }
 
@@ -252,25 +45,20 @@ const styles = StyleSheet.create({
   header: {
     fontSize: 72,
   },
-  
-
   ColorRectangleProfile1: {
     width: '100%',
-    height: '8.04%',
+    height: '10%',
     backgroundColor: '#CC005C',
     alignSelf: 'center',
     top: 0,
     position: 'absolute'
-  
   },
     ColorRectangleProfile2: {
     width: '100%',
-    height: '23.06%',
-    alignSelf:'center',
+    height: '23%',
     backgroundColor: '#DD1155',
-    top: 0,
-    position: 'absolute'
-  
+    position: 'absolute',
+    flexDirection: "row",
   },
   ColorElipseProfile1: {
     width: '10%',
@@ -281,37 +69,28 @@ const styles = StyleSheet.create({
     position: 'absolute',
     borderRadius: 25,
     transform: [{ scaleX: 10 }],
-  
   },
   WhiteButtonProfile: {
     width: '95%',
-    height: '60',
+    height: '7%',
     backgroundColor: 'white',
     top: '27%',
     alignSelf:'center',
-    
     borderRadius: 50,
     marginBottom: 1,
+    flex: 0,
+    flexDirection: "row",
   },
   column: {
     flexDirection: 'column',
     height: '100%',
     width: '100%'
-
   },
   column1: {
     flexDirection: 'column',
-    top: -380,
-
-  },
-  row: {
-    flexDirection: 'row',
-    
-
   },
   WhiteRectangleProfile: {
     backgroundColor: 'white',
-
     top: '30.5%',
     right: '82.5%',
     position: 'absolute',
@@ -319,67 +98,49 @@ const styles = StyleSheet.create({
     height: '38.5%'
   },
   SettingsIconProfile: {
-
     marginTop: '8%',
     marginLeft: '89%',
-    
-    
   },
   ProfileMainIcon: {
-    flexDirection: 'row',
     height: 100,
     width: 100,
-    borderRadius: 200,
+    borderRadius: 50,
     borderColor: 'white',
     borderWidth: 3,
-    marginTop: '22%',
-    marginLeft: 8,
-    alignContent: 'Left'
+    alignContent: 'Left',
+    alignSelf: "center",
+    marginLeft: "4%",
+    marginRight: "3%",
   },
   NickName: {
     fontFamily: 'PassionOne', 
     fontSize: 30,
-    marginTop: 100,
     color: 'white',
-    marginLeft: 10
-
+    marginTop: "13.5%",
   },
   UserName: {
     fontFamily: 'Exo', 
     fontSize: 15,
-    marginTop: -5,
     color: 'white',
-    marginLeft: 10,
-
   },
   ForwardIconProfile:{
-    marginTop: '4%',
-    marginLeft: '78%',
     height: 30,
-    width: 30
-
+    width: 30,
+    position: "absolute",
+    right: "4%",
+    alignSelf: "center",
   },
   IconsProfile:{
-    marginTop: '4%',
-    marginLeft: '4%',
+    marginLeft: '3%',
+    alignSelf: "center",
     height: 30,
-    width: 30
+    width: 30,
 
   },
   OptionText:{
     fontFamily: 'Roboto',
-    marginTop: '5%',
-    marginLeft: '4%',
-    color: 'black'
-
-  },
-  PhotoProfile: {
-    height: 30,
-    width: 30,
-    top: 160,
-    right: 25
-
+    marginLeft: '3%',
+    color: 'black',
+    alignSelf: "center",
   }
-
 });
-
