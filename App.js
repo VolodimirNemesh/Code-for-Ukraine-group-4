@@ -88,7 +88,13 @@ export default function App() {
         <Stack.Screen name="Login" component={LoginScreen}/>
         <Stack.Screen name="Register" component={RegisterScreen}/>
         <Stack.Screen name="MainTabs" component={MainTabs}/>
-        <Stack.Screen name="Settings" component={SettingsScreen}/>
+        <Stack.Screen name="Settings" component={SettingsScreen} options={{
+          headerShown: true,
+          title: "SpotSight",
+          headerStyle: { backgroundColor: "#CC005C"},
+          headerTintColor: "#FFFFFF",
+          headerTitleStyle: { fontFamily: "PassionOne", fontSize: 28 },
+          }}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
