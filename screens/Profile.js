@@ -29,7 +29,7 @@ function ColorRectangleScreenProfile2() {
         <Image source={require('../ProfileIcons/PhotoProfile.png')} 
         style={styles.PhotoProfile}
         />
-              
+               
         <View style={styles.column}>
           <Text style={styles.NickName}>Ayanami Rei</Text>
           <Text style={styles.UserName}>@ayanamilegend</Text>

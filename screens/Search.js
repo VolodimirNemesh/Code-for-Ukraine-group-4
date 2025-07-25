@@ -78,8 +78,9 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   search: {
-    borderBottomLeftRadius: 20,
-    borderBottomRightRadius: 20,
+    borderBottomLeftRadius: 10,
+    borderBottomRightRadius: 10,
+    height:24,
     backgroundColor: "rgba(204, 0, 92, 0.7)"
   },
 })
