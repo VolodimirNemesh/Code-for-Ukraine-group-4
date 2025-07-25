@@ -1,11 +1,12 @@
-import { StyleSheet, Text, Image, View, ScrollView } from 'react-native';
+import { height } from '@fortawesome/free-brands-svg-icons/fa11ty';
+import { StyleSheet, Text, Image, View, ScrollView, Dimensions } from 'react-native';
 
 
 function Description (props) {
   return (
     <View style={styles.description}>
       <Image style={styles.pfps1} source={{uri: props.PFP}} />
-      <Text style={styles.text1}>{props.DESCRIPTION}</Text>
+      <Text style={styles.text1}>{props.description}</Text>
     </View>
   )
 }
@@ -13,7 +14,7 @@ function OneComponent(props) {
   return (
     <View style={[styles.onecomp, props.secondPost && {marginTop: 40}]}>
       <Image style={styles.picture1} source={{uri: props.URL}} />
-      <Description PFP={props.pfp} DESCRIPTION={props.description} />
+      <Description PFP={props.pfp} description={props.description} />
     </View>
   )
 }
@@ -31,9 +32,6 @@ function PeakComponent (props) {
 export default function App() {
   return (
       <View style={styles.container}>
-        <View style={styles.topbar}>
-          <Image style={styles.bell} source={require('../images/bell_notif.png')} />
-        </View>
         <ScrollView style={styles.feed}>
           <PeakComponent link1='https://cioviews.com/wp-content/uploads/2020/12/1-3.jpg' pfp1='https://static.wikia.nocookie.net/evangelion/images/0/0d/OP_C016_rei.jpg/revision/latest?cb=20171121184144&path-prefix=ru'
           desc1='Ayanami Rei' link2='https://images.pexels.com/photos/206359/pexels-photo-206359.jpeg?cs=srgb&dl=pexels-pixabay-206359.jpg&fm=jpg' pfp2='https://s3.amazonaws.com/comicgeeks/characters/avatars/56885.jpg'
@@ -55,41 +53,19 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
   },
-  topbar: {
-    height: '8%',
-    width: "100%",
-    alignSelf: 'center',
-    backgroundColor: '#CC005C',
-    justifyContent: "center",
-    alignItems: "flex-end",
-  },
-  bell: {
-    height: 30,
-    width: 30,
-    marginRight: "2%"
-  },
   feed: {
     flex: 1,
     flexDirection: 'column',
     borderWidth: 3,
   },
   picture1: {
-    height: 250,
-    width: 175,
+    height: Dimensions.get("window").height * 0.3,
+    width: Dimensions.get("window").width * 0.45,
     borderRadius: 10,
     borderWidth: 2,
     justifyContent: 'left',
     marginLeft: 10,
     marginTop: 10,
-  },
-  picture2: {
-    height: 250,
-    width: 175,
-    borderRadius: 10,
-    borderWidth: 2,
-    justifyContent: 'left',
-    margin: 10,
-    marginTop: 40,
   },
   text1: {
     fontSize: 14,

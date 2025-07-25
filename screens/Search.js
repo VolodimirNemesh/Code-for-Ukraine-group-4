@@ -15,18 +15,20 @@ const suggestedData = [
 ];
 const popularData = [
   {src: require("../images/EiffelTower.jpg"), text: "Eiffel Tower"}, 
-  {src: require("../images/LeaningTowerOfPisa.jpg"), text: "Leaning Tower Of Pisa"}
+  {src: require("../images/LeaningTowerOfPisa.jpg"), text: "Leaning Tower Of Pisa"},
 ];
 const friendsFavouriteData = [
   {src: require("../images/LvivNationalOpera.jpg"), text: "Lviv National Opera"},
-  {src: require("../images/MountHoverla.jpg"), text: "Mount Hoverla"}
+  {src: require("../images/MountHoverla.jpg"), text: "Mount Hoverla"},
 ];
+
+const window = Dimensions.get("window");
 
 export default function Search() {
   return (
     <View style={{flex: 1}}>
       <View style={styles.search}>
-        <TextInput style={{ borderRadius: 10, margin: 2 }} placeholder="Search here..."></TextInput>
+        <TextInput style={{ margin: 2, borderRadius: 20, borderColor: "#FFFFFF", borderWidth: 2, alignSelf: "flex-start" }} placeholder="Search here..."></TextInput>
       </View>
       <Text style={styles.text}>Suggested</Text>
       <FlatList style={styles.list} showsHorizontalScrollIndicator={false} horizontal={true} data={suggestedData} renderItem={({item}) => <CustomImage src={item.src} text={item.text}/>}></FlatList>
@@ -39,9 +41,6 @@ export default function Search() {
 }
 
 const styles = StyleSheet.create({
-  header: {
-    fontSize: 72,
-  },
   img: {
     flex: 1,
     borderRadius: 15,
@@ -64,7 +63,7 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     backgroundColor: "#D9D9D9",
     maxHeight: "100%",
-    width: Dimensions.get("window").width * 0.7,
+    width: window.width * 0.7,
     marginRight: 30,
   },
   list: {
