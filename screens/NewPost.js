@@ -34,7 +34,7 @@ export default function NewPost() {
       <CustomTile icon={faMapLocationDot} title="Location" description="Mark..."/>
       <View style={{ flex: 0, flexDirection: "row", justifyContent: "space-between"}}>
         <Text style={{ marginLeft: "10%", fontSize: 20, marginTop: "2.5%" }}>Other options...</Text>
-        <View>
+        <View style={{ height: "100%", width: "100%" }}>
           <Text style={{ marginRight: "10%", fontSize: 20, marginTop: "2.5%", backgroundColor: "#DD1155", borderRadius: 30, alignSelf: "center", color: "white", fontWeight: "bold"}}>Post</Text>
         </View>
         

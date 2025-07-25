@@ -27,17 +27,120 @@ const sampleDataFriends = [
   { id: '5', title: 'Doumo Milan', image: require('../images3/AnorLondo.jpg') },
 ];
 
-const window = Dimensions.get("window");
 
 export default function Search() {
+  const [bookmarks, setBookmarks] = useState({});
+
+  const toggleBookmark = (id) => {
+     setBookmarks((prev) => ({
+      ...prev,
+      [id]: !prev[id]
+    }));
+  };
+
+  const renderHorizontalListSuggested = (title, listKey) => (
+    <View key={listKey} style={styles.section}>
+      <Text style={styles.sectionTitle}>{title}</Text>
+      <FlatList
+        data={sampleDataSuggested}
+        horizontal
+         keyExtractor={(item) => listKey + item.id}
+        showsHorizontalScrollIndicator={false}
+        renderItem={({ item }) => (
+          <View style={styles.card}>
+            <Image source={item.image} style={styles.image} />
+            <TouchableOpacity
+              onPress={() => toggleBookmark(listKey + item.id)}
+          style={styles.bookmarkButton}
+            >
+             
+             
+         <Image
+                source={require('../ProfileIcons/FavoriteProfile.png')}
+                style={[
+                  styles.bookmarkIcon,
+                  { tintColor: bookmarks[listKey + item.id] ? '#CC005C' : '#ccc' }
+                ]}
+              />
+            </TouchableOpacity>
+              <View style={styles.caption}>
+              <Text style={styles.captionText}>{item.title}</Text>
+            </View>
+          </View>
+        )}
+      />
+    </View>
+  );
+  const renderHorizontalListPopular = (title, listKey) => (
+    <View key={listKey} style={styles.section}>
+      <Text style={styles.sectionTitle}>{title}</Text>
+      <FlatList
+        data={sampleDataPopular}
+        horizontal
+         keyExtractor={(item) => listKey + item.id}
+        showsHorizontalScrollIndicator={false}
+        renderItem={({ item }) => (
+          <View style={styles.card}>
+            <Image source={item.image} style={styles.image} />
+            <TouchableOpacity
+              onPress={() => toggleBookmark(listKey + item.id)}
+          style={styles.bookmarkButton}
+            >
+             
+             
+         <Image
+                source={require('../ProfileIcons/FavoriteProfile.png')}
+                style={[
+                  styles.bookmarkIcon,
+                  { tintColor: bookmarks[listKey + item.id] ? '#CC005C' : '#ccc' }
+                ]}
+              />
+            </TouchableOpacity>
+              <View style={styles.caption}>
+              <Text style={styles.captionText}>{item.title}</Text>
+            </View>
+          </View>
+        )}
+      />
+    </View>
+  );
+  const renderHorizontalListFriends = (title, listKey) => (
+    <View key={listKey} style={styles.section}>
+      <Text style={styles.sectionTitle}>{title}</Text>
+      <FlatList
+        data={sampleDataFriends}
+        horizontal
+         keyExtractor={(item) => listKey + item.id}
+        showsHorizontalScrollIndicator={false}
+        renderItem={({ item }) => (
+          <View style={styles.card}>
+            <Image source={item.image} style={styles.image} />
+            <TouchableOpacity
+              onPress={() => toggleBookmark(listKey + item.id)}
+          style={styles.bookmarkButton}
+            >
+             
+             
+         <Image
+                source={require('../ProfileIcons/FavoriteProfile.png')}
+                style={[
+                  styles.bookmarkIcon,
+                  { tintColor: bookmarks[listKey + item.id] ? '#CC005C' : '#ccc' }
+                ]}
+              />
+            </TouchableOpacity>
+              <View style={styles.caption}>
+              <Text style={styles.captionText}>{item.title}</Text>
+            </View>
+          </View>
+        )}
+      />
+    </View>
+  );
+
+
   return (
     <View style={styles.container}>
-      
-      <View style={styles.header}>
-        <Text style={styles.appName}>SpotSight</Text>
-      </View>
-
-
       <View style={styles.searchContainer}>
         <View style={styles.searchBox}>
           <TextInput

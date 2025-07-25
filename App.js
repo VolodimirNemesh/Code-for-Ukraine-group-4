@@ -4,10 +4,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import { useFonts } from 'expo-font';
 
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faQuestion, faHouse, faMagnifyingGlass, faCirclePlus, faComments, faUser, faBell, faGear } from '@fortawesome/free-solid-svg-icons';
-
-import { Dimensions, Pressable } from 'react-native';
+import { Dimensions, Pressable, Image, StyleSheet } from 'react-native';
 
 
 import LoginScreen from "./screens/Login.js";
@@ -18,6 +15,7 @@ import NewPostScreen from "./screens/NewPost.js";
 import MessagesScreen from "./screens/Messages.js";
 import ProfileScreen from "./screens/Profile.js";
 import SettingsScreen from "./screens/Settings.js";
+import { icon } from '@fortawesome/fontawesome-svg-core';
 
 
 const Stack = createNativeStackNavigator();
@@ -25,7 +23,7 @@ const Tabs = createBottomTabNavigator();
 
 const bell = {
   headerRight: () => (
-    <FontAwesomeIcon style={{ marginRight: Dimensions.get("window").width * 0.03 }} icon={faBell} size={30} color={"#FFFFFF"} />
+    <Image source={require("./navigationIcons/Bell.png")} style={styles.headerIcon}/>
   ),
 }
 
@@ -40,23 +38,23 @@ function MainTabs() {
         title: "SpotSight",
         headerStyle: { backgroundColor: "#CC005C"},
         headerTintColor: "#FFFFFF",
-        headerTitleStyle: { fontWeight: "bold" },
+        headerTitleStyle: { fontFamily: "PassionOne", fontSize: 28 },
         tabBarIcon: ({ focused, color, size }) => {
-          let iconName = faQuestion;
+          let icon = require("./navigationIcons/Question.png");;
 
           if (route.name === "Home") {
-            iconName = faHouse;
+            icon = require("./navigationIcons/Home.png");
           } else if (route.name === "Search") {
-            iconName = faMagnifyingGlass;
+            icon = require("./navigationIcons/Loop.png");
           } else if (route.name === "New Post") {
-            iconName = faCirclePlus;
+            icon = require("./navigationIcons/AddPost.png");;
           } else if (route.name === "Messages") {
-            iconName = faComments;
+            icon = require("./navigationIcons/Messages.png");;
           } else if (route.name === "Profile") {
-            iconName = faUser;
+            icon = require("./navigationIcons/Profile.png");;
           }
 
-          return <FontAwesomeIcon icon={iconName} size={size} color={color} />;
+          return <Image source={icon} style={styles.icon}/>;
         },
         tabBarActiveTintColor: "#000000",
         tabBarInactiveTintColor: "#FFFFFF",
@@ -69,7 +67,7 @@ function MainTabs() {
       <Tabs.Screen name="Profile" component={ProfileScreen} options={{
         headerRight: () => (
           <Pressable onPress={() => navigation.navigate("Settings")}>
-            <FontAwesomeIcon style={{ marginRight: Dimensions.get("window").width * 0.03 }} icon={faGear} size={30} color={"#FFFFFF"} />
+            <Image source={require("./navigationIcons/Settings.png")} style={styles.headerIcon}/>
           </Pressable>
   )}}/>
     </Tabs.Navigator>
@@ -96,3 +94,15 @@ export default function App() {
     </NavigationContainer>
   );
 }
+
+const styles = StyleSheet.create({
+  icon: {
+    height: 30,
+    width: 30,
+  },
+  headerIcon: {
+    marginRight: Dimensions.get("window").width * 0.03,
+    height: 30,
+    width: 30,
+  }
+})
