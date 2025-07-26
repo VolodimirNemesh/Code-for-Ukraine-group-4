@@ -8,14 +8,7 @@ import { useNavigation } from "@react-navigation/native";
 
 export default function Messages() {
 
-  function Profile() {
-    return(
-      <View style={styles.row}>
-        <Image source={require('../ProfileIcons/Doggie.png')} style={styles.PhotoProfile}/>
-        <Text style={styles.OptionText}>Doggie</Text>
-      </View>
-    );
-  }
+
 
   function Your_Message(props) {
     return(
@@ -45,7 +38,12 @@ export default function Messages() {
   return (
     <View>
       <View style={styles.profile}>
-        <Profile/>
+      <View style={styles.row}>
+        <Image source={require('../ProfileIcons/Doggie.png')} style={styles.PhotoProfile}/>
+        <Text style={styles.OptionText}>Doggie</Text>
+      </View>
+
+
       </View>
 
       <Your_Message content={"Hi, Mia! Are you free this weekend?!"} width_={230}/>
@@ -70,20 +68,17 @@ const styles = StyleSheet.create({
     fontSize: 72,
   },
   profile:{
-    flexDirection: 'row',
-    height: 100,
-    width: Dimensions.get("window").width,
+    height: '13%',
+    width: "100%",
     borderRadius:20,
-    justifyContent: 'center',
-    alignContent: 'Left',
     backgroundColor: 'pink',
   },
   PhotoProfile: {
-    height: 75,
-    width: 75,
+    height: 70,
+    width: 70,
     top: 15,
-    right: '43%',
-    borderRadius:50,
+    left:344,
+    borderRadius:2000,
   },
   YourmessagePhoto:{
     height: 30,
@@ -104,10 +99,10 @@ const styles = StyleSheet.create({
   },
   OptionText:{
     fontFamily: 'Roboto',
-    marginRight: '15%',
+
     color: 'white',
     fontSize: 28,
-    alignSelf: "center",
+ 
 
   },
   MessageText:{
@@ -118,8 +113,8 @@ const styles = StyleSheet.create({
     fontSize: 14
 
   },
-  row: {
-    flexDirection: 'row',
+  row:{
+  flexDirection: 'row'
 
   },
   message:{

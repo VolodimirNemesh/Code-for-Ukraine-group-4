@@ -7,6 +7,7 @@ import { useFonts } from 'expo-font';
 import { Dimensions, Pressable, Image, StyleSheet } from 'react-native';
 
 
+import SeasonModeScreen from "./screens/SeasonMode.js";
 import LoginScreen from "./screens/Login.js";
 import RegisterScreen from "./screens/Register.js";
 import HomeScreen from "./screens/Home.js";
@@ -15,7 +16,6 @@ import NewPostScreen from "./screens/NewPost.js";
 import MessagesScreen from "./screens/Messages.js";
 import ProfileScreen from "./screens/Profile.js";
 import SettingsScreen from "./screens/Settings.js";
-import { icon } from '@fortawesome/fontawesome-svg-core';
 
 
 const Stack = createNativeStackNavigator();
@@ -63,7 +63,7 @@ function MainTabs() {
       <Tabs.Screen name="Home" component={HomeScreen} options={bell}/>
       <Tabs.Screen name="Search" component={SearchScreen} options={bell}/>
       <Tabs.Screen name="New Post" component={NewPostScreen} options={bell}/>
-      <Tabs.Screen name="Messages" component={MessagesScreen}/>
+      <Tabs.Screen name="SeasonMode" component={SeasonModeScreen}/>
       <Tabs.Screen name="Profile" component={ProfileScreen} options={{
         headerRight: () => (
           <Pressable onPress={() => navigation.navigate("Settings")}>

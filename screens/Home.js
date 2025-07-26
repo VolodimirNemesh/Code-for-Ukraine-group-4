@@ -1,4 +1,3 @@
-import { height } from '@fortawesome/free-brands-svg-icons/fa11ty';
 import { StyleSheet, Text, Image, View, ScrollView, Dimensions } from 'react-native';
 
 

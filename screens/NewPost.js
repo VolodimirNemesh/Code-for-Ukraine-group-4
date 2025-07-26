@@ -1,8 +1,4 @@
-import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { View, Text, StyleSheet, Dimensions, TextInput } from "react-native";
-
-import { faCircleArrowUp, faBook, faBarsStaggered, faHashtag, faMapLocationDot } from "@fortawesome/free-solid-svg-icons";
-
 const window = Dimensions.get("window");
 
 function CustomTile(props) {
@@ -13,7 +9,6 @@ function CustomTile(props) {
         <Text style={styles.title}>{props.title}</Text>
         <TextInput style={styles.description} placeholder={props.description} placeholderTextColor={"#3E3E3E"}/>
       </View>
-      <FontAwesomeIcon style={{ alignSelf: "center" }} icon={props.icon} size={50} color="#000000"/>
     </View>
   )
 }
@@ -25,7 +20,6 @@ export default function NewPost() {
         <Text style={styles.headerText}>Post Creation</Text>
       </View>
       <View style={styles.uploadImage}>
-        <FontAwesomeIcon icon={faCircleArrowUp} size={30} color={"#000000"}/>
         <Text style={styles.text}>Upload file</Text>
       </View>
       <CustomTile icon={faBook} title="Title" description="Add a title..."/>
