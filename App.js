@@ -14,6 +14,7 @@ import HomeScreen from "./screens/Home.js";
 import SearchScreen from "./screens/Search.js";
 import NewPostScreen from "./screens/NewPost.js";
 import MessagesScreen from "./screens/Messages.js";
+import DMScreen from "./screens/DM.js";
 import ProfileScreen from "./screens/Profile.js";
 import SettingsScreen from "./screens/Settings.js";
 
@@ -63,7 +64,7 @@ function MainTabs() {
       <Tabs.Screen name="Home" component={HomeScreen} options={bell}/>
       <Tabs.Screen name="Search" component={SearchScreen} options={bell}/>
       <Tabs.Screen name="New Post" component={NewPostScreen} options={bell}/>
-      <Tabs.Screen name="SeasonMode" component={SeasonModeScreen}/>
+      <Tabs.Screen name="Messages" component={MessagesScreen}/>
       <Tabs.Screen name="Profile" component={ProfileScreen} options={{
         headerRight: () => (
           <Pressable onPress={() => navigation.navigate("Settings")}>
@@ -96,6 +97,7 @@ export default function App() {
           headerTintColor: "#FFFFFF",
           headerTitleStyle: { fontFamily: "PassionOne", fontSize: 28 },
           }}/>
+        <Stack.Screen name="DM" component={DMScreen}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
