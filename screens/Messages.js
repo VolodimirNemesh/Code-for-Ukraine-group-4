@@ -33,39 +33,39 @@ export default function Messages() {
 const styles = StyleSheet.create({
   pos1: {
     position: "absolute",
-    right: window.width * 0.25,
-    marginTop: window.height * 0.18,
+    left: window.width * 0.55,
+    top: window.height * 0.18,
   },
   pos1img: {
     position: "absolute",
-    right: window.width * 0.28,
-    marginTop: window.height * 0.1925,
+    left: window.width * 0.58,
+    top: window.height * 0.1925,
     height: window.height * 0.06, 
     width: window.height * 0.06, 
     borderRadius: window.height * 0.03
   },
   pos2: {
     position: "absolute",
-    right: window.width * 0.63,
-    marginTop: window.height * 0.32,
+    left: window.width * 0.25,
+    top: window.height * 0.32,
   },
   pos2img: {
     position: "absolute",
-    right: window.width * 0.66,
-    marginTop: window.height * 0.3325,
+    left: window.width * 0.28,
+    top: window.height * 0.3325,
     height: window.height * 0.06, 
     width: window.height * 0.06, 
     borderRadius: window.height * 0.03
   },
   pos3: {
     position: "absolute",
-    right: window.width * 0.25,
-    marginTop: window.height * 0.55,
+    left: window.width * 0.55,
+    top: window.height * 0.55,
   },
   pos3img: {
     position: "absolute",
-    right: window.width * 0.28,
-    marginTop: window.height * 0.5625,
+    left: window.width * 0.58,
+    top: window.height * 0.5625,
     height: window.height * 0.06, 
     width: window.height * 0.06, 
     borderRadius: window.height * 0.03

@@ -1,5 +1,4 @@
-
-
+import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
 import {
   View,
@@ -12,6 +11,7 @@ import {
 } from 'react-native';
 
 export default function ChatScreen() {
+  const navigation = useNavigation();
   const [messages, setMessages] = useState([
     {
       id: 1,
@@ -62,8 +62,8 @@ export default function ChatScreen() {
           <Text style={styles.username}>@rachelthebest</Text>
         </View>
         <View style={{ flex: 1 }} />
-        <TouchableOpacity style={styles.menuButton}>
-          <Text style={styles.menuIcon}>☰</Text>
+        <TouchableOpacity style={styles.menuButton} onPress={() => navigation.goBack()}>
+          <Text style={styles.menuIcon}>←</Text>
         </TouchableOpacity>
       </View>
 
@@ -161,7 +161,8 @@ const styles = StyleSheet.create({
   },
 
   menuIcon: {
-    fontSize: 24,
+    fontSize: 36,
+    fontWeight: "bold",
     color: 'white',
   },
 

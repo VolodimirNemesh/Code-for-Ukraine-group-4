@@ -21,11 +21,14 @@ export default function SeasonMode() {
         <Text style={styles.textIn}>Spring mode</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => setBg('#5EB229')} style={styles.SummerButtonProfile} >
-        <Text style={styles.textIn}>Winter mode</Text>
+        <Text style={styles.textIn}>Summer mode</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => setBg('#EBA32A')} style={styles.AutumnButtonProfile} >
-        <Text style={styles.textIn}>Winter mode</Text>
+        <Text style={styles.textIn}>Autumn mode</Text>
         </TouchableOpacity>
+
+        <Pressable onPress={() => navigation.goBack()} style={{ borderRadius: 20, borderWidth: 3, width: "80%", alignSelf: "center", backgroundColor: "#DD1155" }}><Text style={{ fontSize: 32, fontWeight: "semibold", alignSelf: "center" }}>Go back</Text></Pressable>
+
         </View>
       </View>
   );
