@@ -1,162 +1,250 @@
-import { StatusBar } from 'expo-status-bar';
-import {React} from 'react';
-import { useState} from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Image, Pressable, Dimensions } from 'react-native';
-import { useFonts } from 'expo-font';
-import * as SplashScreen from 'expo-splash-screen';
-import { useNavigation } from "@react-navigation/native";
 
-export default function DM() {
 
-  function Profile() {
-    return(
-      <View style={styles.row}>
-        <Image source={require('../ProfileIcons/Doggie.png')} style={styles.PhotoProfile}/>
-        <Text style={styles.OptionText}>Doggie</Text>
-      </View>
-    );
-  }
+import React, { useState } from 'react';
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  ScrollView,
+  StyleSheet,
+  Image,
+} from 'react-native';
 
-  function Your_Message(props) {
-    return(
-      <View style={styles.left_message}>
-        <View style={styles.row}>
-          <View style={{flexDirection:'row',height: 45,width: props.width_,borderRadius:20,marginTop:20,justifyContent:'flex-end',alignContent: 'right',backgroundColor: 'pink',}}>
-            <Text style={styles.MessageText}>{props.content}</Text>
-          </View>
-          <Image source={require('../ProfileIcons/ProfileMainIcon.png')} style={styles.YourmessagePhoto}/>
-        </View>
-      </View>
-    );
-  }
-  function Others_Message(props) {
-    return(
-      <View style={styles.right_message}>
-        <View style={styles.row}>
-          <Image source={require('../ProfileIcons/Doggie.png')} style={styles.OthersmessagePhoto}/>
-          <View style={{flexDirection:'row',height: 45,width: props.width_,borderRadius:20,marginTop:20,justifyContent:'flex-end',alignContent: 'right',backgroundColor: 'lightblue',}}>
-            <Text style={styles.MessageText}>{props.content}</Text>
-          </View>
-        </View>
-      </View>
-    );
+export default function ChatScreen() {
+  const [messages, setMessages] = useState([
+    {
+      id: 1,
+      sender: 'Asuka',
+      text: 'Hello',
+      avatar: require('./DialogWithRachel/ProfileMainIcon.png'),
+    },
+    {
+      id: 2,
+      sender: 'You',
+      text: 'Hi Rachel! How many trophies do you have in Clash Royale?',
+      avatar: require('./DialogWithRachel/ProfileMainIcon.png'),
+    },
+    {
+      id: 3,
+      sender: 'Asuka',
+      text: 'I`m the best player so i play on 4000',
+      avatar: require('./DialogWithRachel/ProfileMainIcon.png'),
+    },
+  ]);
+
+  const [inputText, setInputText] = useState('');
+
+  function handleSend() {
+    if (inputText.trim() !== '') {
+      const newMessage = {
+        id: messages.length + 1,
+        sender: 'You',
+        text: inputText,
+        avatar: require('./DialogWithRachel/ProfileMainIcon.png'), // локальный путь
+      };
+
+      setMessages([...messages, newMessage]);
+      setInputText('');
+    }
   }
 
   return (
-    <View>
-      <View style={styles.profile}>
-        <Profile/>
+    <View style={styles.screen}>
+      
+      <View style={styles.header}>
+        <Image
+          source={require('./DialogWithRachel/ProfileMainIcon.png')}
+          style={styles.avatar}
+        />
+        <View>
+          <Text style={styles.name}>Asuka Langley</Text>
+          <Text style={styles.username}>@asukachan</Text>
+        </View>
+        <View style={{ flex: 1 }} />
+        <TouchableOpacity style={styles.menuButton}>
+          <Text style={styles.menuIcon}>☰</Text>
+        </TouchableOpacity>
       </View>
 
-      <Your_Message content={"Hi, Mia! Are you free this weekend?!"} width_={230}/>
-      <Others_Message content={"Hey, Liam! Yes, I think so. Why?"} width_={205}/>
-      <Your_Message content={"Want to meet up on Sunday?"} width_={181}/>
-      <Others_Message content={"Sure! What time?"} width_={120}/>
-      <Your_Message content={"Maybe around 2 p.m.?"} width_={149}/>
-      <Others_Message content={"Sounds good. Where?"} width_={149}/>
-      <Your_Message content={"Lets go to the new café downtown."} width_={220}/>
-      <Others_Message content={"Great idea! See you there."} width_={175}/>
-      <Your_Message content={"Get back on Grief"} width_={123}/>
+      
+      <View style={styles.messagesBox}>
+        <ScrollView>
+          {messages.map((msg) => (
+            <View
+              key={msg.id}
+              style={
+                msg.sender === 'You'
+                  ? styles.myMessageBlock
+                  : styles.otherMessageBlock
+              }
+            >
+              <View style={styles.messageRow}>
+                {msg.sender !== 'You' && (
+                  <Image source={msg.avatar} style={styles.messageAvatar} />
+                )}
 
-      <View style={styles.typer}>
-        <Text style={styles.TyperText}>Type here...</Text>
+                <View
+                  style={[
+                    styles.bubble,
+                    msg.sender === 'You' ? styles.myBubble : styles.otherBubble,
+                  ]}
+                >
+                  <Text style={styles.messageText}>{msg.text}</Text>
+                </View>
+
+                {msg.sender === 'You' && (
+                  <Image source={msg.avatar} style={styles.messageAvatar} />
+                )}
+              </View>
+            </View>
+          ))}
+        </ScrollView>
       </View>
 
+      
+      <View style={styles.inputBox}>
+        <TextInput
+          value={inputText}
+          onChangeText={setInputText}
+          placeholder="Type here..."
+          style={styles.input}
+          placeholderTextColor="#888"
+        />
+        <TouchableOpacity onPress={handleSend} style={styles.sendButton}>
+          <Text style={styles.sendText}>➤</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
 const styles = StyleSheet.create({
+  screen: {
+    width: '100%',
+    height: '95%',
+    backgroundColor: '#ffffff',
+  },
+
   header: {
-    fontSize: 72,
-  },
-  profile:{
-    flexDirection: 'row',
     height: 100,
-    width: Dimensions.get("window").width,
-    borderRadius:20,
-    justifyContent: 'center',
-    alignContent: 'Left',
-    backgroundColor: 'pink',
-  },
-  PhotoProfile: {
-    height: 75,
-    width: 75,
-    top: 15,
-    right: '43%',
-    borderRadius:50,
-  },
-  YourmessagePhoto:{
-    height: 30,
-    width: 30,
-    top: 13,
-    marginTop:16,
-    marginLeft:12,
-    borderRadius:50,
-  },
-  OthersmessagePhoto:{
-    height: 30,
-    width: 30,
-    top: 13,
-    marginTop:16,
-    marginLeft:12,
-    marginRight:12,
-    borderRadius:50,
-  },
-  OptionText:{
-    fontFamily: 'Roboto',
-    marginRight: '15%',
-    color: 'white',
-    fontSize: 28,
-    alignSelf: "center",
-
-  },
-  MessageText:{
-    fontFamily: 'Roboto',
-    marginTop: 14,
-    marginRight: 12,
-    color: 'white',
-    fontSize: 14
-
-  },
-  row: {
+    backgroundColor: '#FD4A9B',
     flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: 16,
+    
+  },
 
-  },
-  message:{
-    flexDirection:'row',
-    height: 60,
-    width: 150,
-    borderRadius:20,
-    marginTop:20,
-    justifyContent:'flex-end',
-    alignContent: 'right',
-    backgroundColor: 'pink',
-  },
-  typer:{
-    height: 45,
-    width: 370,
-    borderRadius:20,
-    marginLeft:30,
-    marginTop:15,
-    borderColor: 'black',
+  avatar: {
+    width: 70,
+    height: 70,
+    borderRadius: 25,
+    backgroundColor: 'white',
+    marginRight: 12,
     borderWidth: 2,
-    justifyContent:'flex-start',
-    alignContent: 'left',
-    backgroundColor: '#DEDEDE',
+    borderColor: '#CC005C',
   },
-  TyperText:{
-    fontFamily: 'Inter-V',
-    marginTop: 12,
-    marginLeft: 12,
-    color: 'black',
-    fontSize: 14
+
+  name: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: 'white',
   },
-  left_message: {
+
+  username: {
+    fontSize: 14,
+    color: 'white',
+    opacity: 0.9,
+  },
+
+  menuButton: {
+    padding: 1,
+  },
+
+  menuIcon: {
+    fontSize: 24,
+    color: 'white',
+  },
+
+  messagesBox: {
+    flex: 1,
+    padding: 10,
+  },
+
+  myMessageBlock: {
     alignItems: 'flex-end',
-    marginRight:15
+    marginBottom: 5,
   },
-  right_message: {
+
+  otherMessageBlock: {
     alignItems: 'flex-start',
-    marginRight:15
+    marginBottom: 5,
   },
-})  
+
+  messageRow: {
+    flexDirection: 'row',
+    alignItems: 'flex-end',
+    maxWidth: '100%',
+  },
+
+  messageAvatar: {
+    width: 30,
+    height: 30,
+    borderRadius: 15,
+    marginHorizontal: 6,
+  },
+
+
+  bubble: {
+    padding: 10,
+    borderRadius: 10,
+    maxWidth: '75%',
+  },
+
+  myBubble: {
+    backgroundColor: '#ff93c4ff',
+  },
+
+  otherBubble: {
+    backgroundColor: '#90e5ffff',
+  },
+
+  messageText: {
+    fontSize: 16,
+    color: '#000',
+  },
+
+  inputBox: {
+    height: 60,
+    flexDirection: 'row',
+    padding: 10,
+    borderTopWidth: 1,
+    borderColor: '#ccc',
+    backgroundColor: '#f2f2f2',
+    alignItems: 'center',
+  },
+
+  input: {
+    flex: 1,
+    height: 40,
+    backgroundColor: '#ffffff',
+    paddingHorizontal: 10,
+    borderRadius: 8,
+    borderColor: '#ccc',
+    borderWidth: 1,
+    color: '#000',
+  },
+
+  sendButton: {
+    marginLeft: 10,
+    backgroundColor: '#CC005C',
+    paddingVertical: 8,
+    paddingHorizontal: 14,
+    borderRadius: 8,
+  },
+
+  sendText: {
+    color: 'white',
+    fontWeight: 'bold',
+    fontSize: 18,
+  },
+});
