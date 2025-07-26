@@ -1,39 +1,42 @@
-import { View, Text, StyleSheet, Dimensions, TextInput } from "react-native";
+import { View, Text, StyleSheet, Dimensions, TextInput, Image, ScrollView } from "react-native";
+
 const window = Dimensions.get("window");
 
 function CustomTile(props) {
-  // props: title, description, icon
+  // props: title, description, src
   return (
     <View style={styles.customTile}>
       <View style={styles.textInputs}>
         <Text style={styles.title}>{props.title}</Text>
         <TextInput style={styles.description} placeholder={props.description} placeholderTextColor={"#3E3E3E"}/>
       </View>
+      <Image style={styles.image} source={props.src}/>
     </View>
   )
 }
 
 export default function NewPost() {
   return (
-    <View style={{flex: 1}}>
+    <ScrollView style={{flex: 0}}>
       <View style={styles.header}>
         <Text style={styles.headerText}>Post Creation</Text>
       </View>
       <View style={styles.uploadImage}>
+        <Image style={{ height: 40, width: 40, alignSelf: "center" }} source={require("../postIcons/Arrow.png")}/>
         <Text style={styles.text}>Upload file</Text>
       </View>
-      <CustomTile icon={faBook} title="Title" description="Add a title..."/>
-      <CustomTile icon={faBarsStaggered} title="Description" description="Add description..."/>
-      <CustomTile icon={faHashtag} title="Tags" description="#Add tag..."/>
-      <CustomTile icon={faMapLocationDot} title="Location" description="Mark..."/>
-      <View style={{ flex: 0, flexDirection: "row", justifyContent: "space-between"}}>
+      <CustomTile src={require("../postIcons/Book.png")} title="Title" description="Add a title..."/>
+      <CustomTile src={require("../postIcons/Text.png")} title="Description" description="Add description..."/>
+      <CustomTile src={require("../postIcons/Hashtag.png")} title="Tags" description="#Add tag..."/>
+      <CustomTile src={require("../postIcons/Location.png")} title="Location" description="Mark..."/>
+      <View style={{ flex: 0, flexDirection: "row", justifyContent: "space-between", marginTop: 40 }}>
         <Text style={{ marginLeft: "10%", fontSize: 20, marginTop: "2.5%" }}>Other options...</Text>
-        <View style={{ height: "100%", width: "100%" }}>
-          <Text style={{ marginRight: "10%", fontSize: 20, marginTop: "2.5%", backgroundColor: "#DD1155", borderRadius: 30, alignSelf: "center", color: "white", fontWeight: "bold"}}>Post</Text>
+        <View style={{ height: Dimensions.get("window").height * 0.05, width: Dimensions.get("window").width * 0.15, backgroundColor: "#DD1155", marginRight: "10%", borderRadius: 30 }}>
+          <Text style={{ fontSize: 20, alignSelf: "center", marginTop: "15%", color: "white", fontWeight: "bold"}}>Post</Text>
         </View>
         
       </View>
-    </View>
+    </ScrollView>
   );
 }
 
@@ -54,7 +57,7 @@ const styles = StyleSheet.create({
     width: "80%",
     height: window.height * 0.25,
     borderRadius: 40,
-    borderColor: "#000000",
+    borderColor: "#6C6C6C",
     borderWidth: 5,
     alignItems: "center",
     alignSelf: "center",
@@ -63,6 +66,7 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 24,
     fontWeight: "500",
+    color: "#6C6C6C"
   },
   customTile: {
     flex: 1,
@@ -89,4 +93,9 @@ const styles = StyleSheet.create({
     marginLeft: 20,
     fontSize: 20,
   },
+  image: {
+    height: 75,
+    width: 75,
+    alignSelf: "center"
+  }
 })

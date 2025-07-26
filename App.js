@@ -39,19 +39,19 @@ function MainTabs() {
         headerStyle: { backgroundColor: "#CC005C"},
         headerTintColor: "#FFFFFF",
         headerTitleStyle: { fontFamily: "PassionOne", fontSize: 28 },
-        tabBarIcon: ({ focused, color, size }) => {
+        tabBarIcon: ({ focused }) => {
           let icon = require("./navigationIcons/Question.png");;
 
           if (route.name === "Home") {
-            icon = require("./navigationIcons/Home.png");
+            focused ? icon = require("./navigationIcons/HomeB.png") : icon = require("./navigationIcons/Home.png")
           } else if (route.name === "Search") {
-            icon = require("./navigationIcons/Loop.png");
+            focused ? icon = require("./navigationIcons/LoopB.png") : icon = require("./navigationIcons/Loop.png")
           } else if (route.name === "New Post") {
-            icon = require("./navigationIcons/AddPost.png");;
+            focused ? icon = require("./navigationIcons/AddPostB.png") : icon = require("./navigationIcons/AddPost.png")
           } else if (route.name === "Messages") {
-            icon = require("./navigationIcons/Messages.png");;
+            focused ? icon = require("./navigationIcons/MessagesB.png") : icon = require("./navigationIcons/Messages.png")
           } else if (route.name === "Profile") {
-            icon = require("./navigationIcons/Profile.png");;
+            focused ? icon = require("./navigationIcons/ProfileB.png") : icon = require("./navigationIcons/Profile.png")
           }
 
           return <Image source={icon} style={styles.icon}/>;
@@ -89,7 +89,13 @@ export default function App() {
         <Stack.Screen name="Login" component={LoginScreen}/>
         <Stack.Screen name="Register" component={RegisterScreen}/>
         <Stack.Screen name="MainTabs" component={MainTabs}/>
-        <Stack.Screen name="Settings" component={SettingsScreen}/>
+        <Stack.Screen name="Settings" component={SettingsScreen} options={{
+          headerShown: true,
+          title: "SpotSight",
+          headerStyle: { backgroundColor: "#CC005C"},
+          headerTintColor: "#FFFFFF",
+          headerTitleStyle: { fontFamily: "PassionOne", fontSize: 28 },
+          }}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

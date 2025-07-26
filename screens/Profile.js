@@ -8,12 +8,12 @@ import { useNavigation } from "@react-navigation/native";
 function ProfileNavigate(props) {
   // props: navigation, screen, icon, text
   return (
-      <TouchableOpacity onPress={() => props.navigation.navigate(props.screen)} style={styles.WhiteButtonProfile}>
-        <Image source={props.icon} style={styles.IconsProfile}/>
-        <Text style={styles.OptionText}>{props.text}</Text>
-        <Image source={require('../ProfileIcons/ForwardIconProfile30.png')} style={styles.ForwardIconProfile}/>
-      </TouchableOpacity>
-    );
+    <TouchableOpacity onPress={() => props.navigation.navigate(props.screen)} style={styles.WhiteButtonProfile}>
+      <Image source={props.icon} style={styles.IconsProfile}/>
+      <Text style={styles.OptionText}>{props.text}</Text>
+      <Image source={require('../ProfileIcons/ForwardIconProfile30.png')} style={styles.ForwardIconProfile}/>
+    </TouchableOpacity>
+  );
 }
 
 export default function Profile() {
