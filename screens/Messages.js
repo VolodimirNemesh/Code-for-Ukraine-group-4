@@ -11,7 +11,7 @@ export default function Messages() {
 
         <Pressable onPress={() => navigation.navigate("DM")}>
           <Image style={styles.pos1} source={require("../DMStuff/Location.png")}/>
-          <Image source={require("../DMStuff/Doggie.png")} style={styles.pos1img}/>
+          <Image source={require("../DialogWithRachel/Rachel!!.jpg")} style={styles.pos1img}/>
         </Pressable>
         
 

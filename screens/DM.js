@@ -15,21 +15,21 @@ export default function ChatScreen() {
   const [messages, setMessages] = useState([
     {
       id: 1,
-      sender: 'Asuka',
+      sender: 'Rachel',
       text: 'Hello',
-      avatar: require('./DialogWithRachel/ProfileMainIcon.png'),
+      avatar: require('../DialogWithRachel/Rachel!!.jpg'),
     },
     {
       id: 2,
       sender: 'You',
       text: 'Hi Rachel! How many trophies do you have in Clash Royale?',
-      avatar: require('./DialogWithRachel/ProfileMainIcon.png'),
+      avatar: require('../DialogWithRachel/ProfileMainIcon.png'),
     },
     {
       id: 3,
-      sender: 'Asuka',
+      sender: 'Rachel',
       text: 'I`m the best player so i play on 4000',
-      avatar: require('./DialogWithRachel/ProfileMainIcon.png'),
+      avatar: require('../DialogWithRachel/Rachel!!.jpg'),
     },
   ]);
 
@@ -41,7 +41,7 @@ export default function ChatScreen() {
         id: messages.length + 1,
         sender: 'You',
         text: inputText,
-        avatar: require('./DialogWithRachel/ProfileMainIcon.png'), // локальный путь
+        avatar: require('../DialogWithRachel/ProfileMainIcon.png'), // локальный путь
       };
 
       setMessages([...messages, newMessage]);
@@ -54,12 +54,12 @@ export default function ChatScreen() {
       
       <View style={styles.header}>
         <Image
-          source={require('./DialogWithRachel/ProfileMainIcon.png')}
+          source={require('../DialogWithRachel/Rachel!!.jpg')}
           style={styles.avatar}
         />
         <View>
-          <Text style={styles.name}>Asuka Langley</Text>
-          <Text style={styles.username}>@asukachan</Text>
+          <Text style={styles.name}>Rachel Liu</Text>
+          <Text style={styles.username}>@rachelthebest</Text>
         </View>
         <View style={{ flex: 1 }} />
         <TouchableOpacity style={styles.menuButton}>
@@ -137,7 +137,7 @@ const styles = StyleSheet.create({
   avatar: {
     width: 70,
     height: 70,
-    borderRadius: 25,
+    borderRadius: 50,
     backgroundColor: 'white',
     marginRight: 12,
     borderWidth: 2,
